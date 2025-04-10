@@ -48,6 +48,7 @@ export function Home() {
         setFilteredTasks(filtered);
     }, [tasks, activeFilter, searchTerm]);
 
+    // crud - load to hook
     function addTask(title, text) {
         const newTask = {
             id: Date.now().toString(),
