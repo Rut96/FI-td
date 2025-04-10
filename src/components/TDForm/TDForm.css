@@ -1,0 +1,22 @@
+.TDForm {
+    padding: 1rem;
+}
+
+.TDForm form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.TDForm button {
+    font-size: medium;
+    color: black;
+    background-color: #DAD9CE;
+    transition: all 0.3s ease-in-out;
+}
+
+.TDForm button:hover {
+    background-color: #90796B;
+    color: #DAD9CE;
+}
+

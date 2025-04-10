@@ -1,0 +1,9 @@
+.SearchBar{
+    flex: 1;
+}
+
+.SearchBar input{
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+}

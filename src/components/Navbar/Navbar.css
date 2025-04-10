@@ -1,0 +1,26 @@
+.Navbar {
+    border-bottom: 2px solid #90796B;
+    /* padding: 1rem 0 0.5rem 0; */
+    padding: 1rem;
+    margin: 0 1rem 0 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-size: larger;
+    font-weight: 500;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    padding: 0.7rem;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover{
+    transform: scale(1.1); /* doesn't work */
+    background-color: #f0f0f0;
+}

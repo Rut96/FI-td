@@ -1,0 +1,238 @@
+.TDCard {
+    width: 250px;
+    backdrop-filter: blur(10px);
+    max-height: 350px;
+    border: 1px solid;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    cursor: auto;
+}
+
+.TDCard.completed {
+    border: 2px solid #4caf50;
+    background-color: rgba(240, 255, 240, 0.5);
+}
+
+.card-title {
+    border-radius: 11px 11px 0 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+.card-description {
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+    max-height: 150px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn {
+    background-color: #ffffff29;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.edit-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.delete-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.edit-btn:hover {
+    border: 1px solid #2196F3;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.delete-btn:hover {
+    background-color: lightcoral;
+    border: 1px solid red;
+    transform: scale(1.1);
+}
+
+/* ------------------------------ Edit ------------------------------ */
+
+.card-edit-mode {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.edit-field {
+    margin-bottom: 10px;
+}
+
+.edit-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-field input,
+.edit-field textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.edit-field textarea {
+    min-height: 100px;
+    max-height: 150px;
+    resize: vertical;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.save-btn {
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.save-btn:hover {
+    background-color: #258028;
+}
+
+.cancel-btn {
+    border: none;
+    background-color: #f44336;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.cancel-btn:hover{
+    background-color: #ba1b0f;
+}
+
+
+
+/* ------------------------------ Toggle ------------------------------ */
+
+.card-checkbox {
+    --width: 80px;
+    --height: calc(var(--width) / 3);
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+}
+
+.toggle {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    background-color: #ccc;
+    border-radius: calc(var(--height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+}
+
+.slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--height);
+    height: var(--height);
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.3s all ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked+.slider {
+    background-color: #4caf50;
+}
+
+input[type="checkbox"]:checked+.slider::after {
+    transform: translateX(calc(var(--width) - var(--height)));
+}
+
+
+.labels {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.labels::before,
+.labels::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.labels::before {
+    content: attr(data-on);
+    left: 10px;
+    color: white;
+    opacity: 0;
+}
+
+.labels::after {
+    content: attr(data-off);
+    right: 10px;
+    color: #333;
+    opacity: 1;
+}
+
+input[type="checkbox"]:checked~.labels::before {
+    opacity: 1;
+}
+
+input[type="checkbox"]:checked~.labels::after {
+    opacity: 0;
+}

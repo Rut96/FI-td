@@ -1,0 +1,14 @@
+.FilterBar {
+    padding: 1rem;
+}
+
+.FilterBar select {
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.FilterBar select:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
