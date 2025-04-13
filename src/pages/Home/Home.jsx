@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { TDForm } from '../../components/TDForm/TDForm';
-import { useTask } from '../../hooks/useTask';
-import './Home.css';
-import { TDCard } from '../../components/TDCard/TDCard';
 import { FilterBar } from '../../components/FilterBar/FilterBar';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
+import { TDCard } from '../../components/TDCard/TDCard';
+import { TDForm } from '../../components/TDForm/TDForm';
+import { useTaskCrud } from '../../hooks/useTaskCrud';
+import './Home.css';
 
 export function Home() {
 
@@ -16,6 +16,8 @@ export function Home() {
     const [filteredTasks, setFilteredTasks] = useState([]);
     const [activeFilter, setActiveFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
+
+    const { addTask, deleteTask, toggleTask, updateTask } = useTaskCrud(setTasks);
 
 
     useEffect(() => {
@@ -49,38 +51,38 @@ export function Home() {
     }, [tasks, activeFilter, searchTerm]);
 
     // crud - load to hook
-    function addTask(title, text) {
-        const newTask = {
-            id: Date.now().toString(),
-            title,
-            text,
-            done: false,
-            createdAt: Date.now()
-        }
-        setTasks(prevTasks => [...prevTasks, newTask])
-    }
+    // function addTask(title, text) {
+    //     const newTask = {
+    //         id: Date.now().toString(),
+    //         title,
+    //         text,
+    //         done: false,
+    //         createdAt: Date.now()
+    //     }
+    //     setTasks(prevTasks => [...prevTasks, newTask])
+    // }
 
-    function deleteTask(taskId) {
-        setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
-    }
+    // function deleteTask(taskId) {
+    //     setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+    // }
 
-    function toggleTask(taskId) {
-        setTasks(prevTasks =>
-            prevTasks.map(task => task.id === taskId
-                ? { ...task, done: !task.done }
-                : task
-            )
-        );
-    }
+    // function toggleTask(taskId) {
+    //     setTasks(prevTasks =>
+    //         prevTasks.map(task => task.id === taskId
+    //             ? { ...task, done: !task.done }
+    //             : task
+    //         )
+    //     );
+    // }
 
-    function updateTask(taskId, updatedData) {
-        setTasks(prevTasks =>
-            prevTasks.map(task => task.id === taskId
-                ? { ...task, ...updatedData, updatedAt: Date.now() }
-                : task
-            )
-        );
-    }
+    // function updateTask(taskId, updatedData) {
+    //     setTasks(prevTasks =>
+    //         prevTasks.map(task => task.id === taskId
+    //             ? { ...task, ...updatedData, updatedAt: Date.now() }
+    //             : task
+    //         )
+    //     );
+    // }
 
     function applyFilter(filterType) {
         setActiveFilter(filterType);
