@@ -3,16 +3,12 @@ import './TDCard.css'
 
 export function TDCard({ props, toggleTask, deleteTask, updateTask }) {
 
-    // State to track if we're in edit mode
     const [isEditing, setIsEditing] = useState(false);
-
-    // State to hold edited values
     const [editedTitle, setEditedTitle] = useState(props.title);
     const [editedText, setEditedText] = useState(props.text);
 
     function handleEdit() {
         if (isEditing) {
-            // Save changes when exiting edit mode
             if (editedTitle.trim() && editedText.trim()) {
                 updateTask(props.id, {
                     title: editedTitle,
@@ -20,16 +16,12 @@ export function TDCard({ props, toggleTask, deleteTask, updateTask }) {
                 });
             }
         } else {
-            // When entering edit mode, initialize form with current values
             setEditedTitle(props.title);
             setEditedText(props.text);
         }
-
-        // Toggle edit mode
         setIsEditing(!isEditing);
     };
 
-    // Handle canceling edit
     function handleCancelEdit() {
         setIsEditing(false);
         // Reset to original values
